@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;1,14..32,300;1,14..32,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 40 15% 92%;
+
+    --card: 0 0% 6%;
+    --card-foreground: 40 15% 92%;
+
+    --popover: 0 0% 6%;
+    --popover-foreground: 40 15% 92%;
+
+    /* Single accent: a warm, slightly desaturated sage-white */
+    --primary: 160 20% 68%;
+    --primary-foreground: 0 0% 4%;
+
+    --secondary: 0 0% 8%;
+    --secondary-foreground: 40 15% 92%;
+
+    --muted: 0 0% 8%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 0 0% 10%;
+    --accent-foreground: 40 15% 92%;
+
+    --destructive: 0 60% 45%;
+    --destructive-foreground: 40 15% 92%;
+
+    --border: 0 0% 12%;
+    --input: 0 0% 10%;
+    --ring: 160 20% 68%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 40 15% 82%;
+    --sidebar-primary: 160 20% 68%;
+    --sidebar-primary-foreground: 0 0% 4%;
+    --sidebar-accent: 0 0% 8%;
+    --sidebar-accent-foreground: 40 15% 92%;
+    --sidebar-border: 0 0% 10%;
+    --sidebar-ring: 160 20% 68%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: hsl(0, 0%, 4%);
+    color: hsl(40, 15%, 92%);
+  }
+
+  ::selection {
+    background: hsla(160, 20%, 68%, 0.2);
+  }
+}
+
+/* Drish design tokens */
+:root {
+  --drish-bg: #0a0a0a;
+  --drish-surface: #111111;
+  --drish-surface-2: #161616;
+  --drish-border: #1e1e1e;
+  --drish-border-subtle: #161616;
+  --drish-text: #ede8e0;
+  --drish-text-2: #8a8580;
+  --drish-text-3: #4a4744;
+  --drish-accent: #a8c5b5;       /* single muted sage-green accent */
+  --drish-accent-dim: rgba(168, 197, 181, 0.08);
+  --drish-accent-border: rgba(168, 197, 181, 0.2);
+}
+
+@layer utilities {
+  .drish-surface {
+    background-color: var(--drish-surface);
+    border: 1px solid var(--drish-border);
+  }
+
+  .drish-input {
+    background-color: var(--drish-surface);
+    border: 1px solid var(--drish-border);
+    color: var(--drish-text);
+    transition: border-color 0.15s ease;
+  }
+
+  .drish-input:focus {
+    border-color: var(--drish-accent);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(168, 197, 181, 0.08);
+  }
+
+  .drish-btn-primary {
+    background-color: var(--drish-accent);
+    color: var(--drish-bg);
+    font-weight: 500;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  .drish-btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  .drish-btn-ghost {
+    background: transparent;
+    color: var(--drish-text-2);
+    transition: color 0.15s ease, background 0.15s ease;
+  }
+
+  .drish-btn-ghost:hover {
+    color: var(--drish-text);
+    background-color: var(--drish-surface-2);
+  }
+
+  .text-accent {
+    color: var(--drish-accent);
+  }
+
+  .carousel-frame {
+    background: #000;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1080 / 1350;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--drish-border);
+    border-radius: 2px;
+  }
+
+  /* Subtle shimmer for loading states */
+  @keyframes shimmer-subtle {
+    0% { opacity: 0.4; }
+    50% { opacity: 0.7; }
+    100% { opacity: 0.4; }
+  }
+  .animate-shimmer-subtle {
+    animation: shimmer-subtle 2s ease-in-out infinite;
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-up {
+    animation: fade-up 0.4s ease forwards;
+  }
+
+  @keyframes float-up {
+    0% { transform: translateY(0) scale(1); opacity: 0; }
+    20% { opacity: 0.4; }
+    80% { opacity: 0.4; }
+    100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+  }
+  .animate-float-up {
+    animation-name: float-up;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes nudge-x {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(4px); }
+  }
+  .animate-nudge-x {
+    animation: nudge-x 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.3; }
+  }
+  .animate-pulse-slow {
+    animation: pulse-slow 8s ease-in-out infinite alternate;
+  }
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  @keyframes fade-in-text {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .animate-fade-in-text {
+    animation: fade-in-text 0.3s ease forwards;
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(50%); }
+  }
+  .animate-shimmer {
+    animation: shimmer 2.5s infinite linear;
+  }
+}

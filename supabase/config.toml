@@ -1,0 +1,25 @@
+project_id = "oaovqantztzzclrxbybn"
+
+[functions.generate-carousel]
+verify_jwt = false
+
+[functions.generate-context]
+verify_jwt = false
+
+[functions.generate-master-image]
+verify_jwt = false
+
+[functions.regenerate-prompt]
+verify_jwt = false
+
+[functions.generate-slide]
+verify_jwt = false
+
+[functions.generate-frame-with-reference]
+verify_jwt = false
+
+[functions.generate-social-content]
+verify_jwt = false
+
+[functions.cleanup-expired]
+verify_jwt = false
